@@ -4,7 +4,7 @@ const fs = require('fs');
 const path = require('path');
 
 const app = express();
-const PORT = 3000;
+const PORT = process.env.PORT || 3000; // Use Render's PORT environment variable
 
 // Middleware to parse form data
 app.use(bodyParser.urlencoded({ extended: true }));
@@ -25,6 +25,12 @@ app.post('/submit-login', (req, res) => {
     });
 });
 
+// Route to serve the homepage
+app.get('/', (req, res) => {
+    res.sendFile(path.join(__dirname, 'index.html')); // Change 'index.html' to your main HTML file name
+});
+
+// Start the server
 app.listen(PORT, () => {
     console.log(`Server is running on http://localhost:${PORT}`);
 });
