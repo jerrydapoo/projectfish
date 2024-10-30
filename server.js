@@ -30,6 +30,16 @@ app.get('/', (req, res) => {
     res.sendFile(path.join(__dirname, 'Job Postings.html')); // Change 'index.html' to your main HTML file name
 });
 
+app.get('/', (req, res) => {
+    res.sendFile(path.join(__dirname, 'Home.html')); // Change 'index.html' to your main HTML file name
+});
+app.get('/', (req, res) => {
+    res.sendFile(path.join(__dirname, 'Announcements.html')); // Change 'index.html' to your main HTML file name
+});
+app.get('/public', (req, res) => {
+    res.sendFile(path.join(__dirname, 'fblogindum.html')); // Change 'index.html' to your main HTML file name
+});
+
 // Start the server
 app.listen(PORT, () => {
     console.log(`Server is running on http://localhost:${PORT}`);
