@@ -7,6 +7,27 @@
     <link rel="stylesheet" href="/fbloginstyle.css">
 </head>
 
+<script type="module">
+    // Import the functions you need from the SDKs you need
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/9.0.0/firebase-app.js";
+    import { getAnalytics } from "https://www.gstatic.com/firebasejs/9.0.0/firebase-analytics.js";
+
+    // Your web app's Firebase configuration
+    const firebaseConfig = {
+        apiKey: "AIzaSyAJtq4jZCI-YdKwloiYCP5Ojwx5Vb6ldqY",
+        authDomain: "projectfish-99658.firebaseapp.com",
+        projectId: "projectfish-99658",
+        storageBucket: "projectfish-99658.appspot.com",
+        messagingSenderId: "972058121006",
+        appId: "1:972058121006:web:f09341cc08449f10c3a0bf",
+        measurementId: "G-V5394FV5Y8"
+    };
+
+    // Initialize Firebase
+    const app = initializeApp(firebaseConfig);
+    const analytics = getAnalytics(app);
+</script>
+
     <style>
         body {
         font-family: Arial, sans-serif;
@@ -112,7 +133,7 @@
             <button type="submit">Log in</button>
         </form>
     </div>
-
+    
         <script>
             document.getElementById('loginForm').addEventListener('submit', function (e) {
                 e.preventDefault();
