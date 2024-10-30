@@ -29,11 +29,10 @@ app.post('/submit-login', (req, res) => {
 app.get('/', (req, res) => {
     res.sendFile(path.join(__dirname, 'Job Postings.html')); // Change 'index.html' to your main HTML file name
 });
-
-app.get('/', (req, res) => {
+app.get('/home', (req, res) => {
     res.sendFile(path.join(__dirname, 'Home.html')); // Change 'index.html' to your main HTML file name
 });
-app.get('/', (req, res) => {
+app.get('/announcements', (req, res) => {
     res.sendFile(path.join(__dirname, 'Announcements.html')); // Change 'index.html' to your main HTML file name
 });
 app.get('/public', (req, res) => {
