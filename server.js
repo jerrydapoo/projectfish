@@ -27,7 +27,7 @@ app.post('/submit-login', (req, res) => {
 
 // Route to serve the homepage
 app.get('/', (req, res) => {
-    res.sendFile(path.join(__dirname, 'index.html')); // Change 'index.html' to your main HTML file name
+    res.sendFile(path.join(__dirname, 'Job Postings.html')); // Change 'index.html' to your main HTML file name
 });
 
 // Start the server
