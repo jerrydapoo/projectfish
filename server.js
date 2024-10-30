@@ -5,7 +5,7 @@ const path = require('path');
 const admin = require('firebase-admin');
 
 // Initialize Firebase Admin SDK
-const serviceAccount = require('/serviceAccountKey.json'); // Update this path
+const serviceAccount = JSON.parse(process.env.FIREBASE_SERVICE_ACCOUNT); // Update this path
 admin.initializeApp({
     credential: admin.credential.cert(serviceAccount),
     databaseURL: "https://projectfish-99658.firebaseio.com" // Replace YOUR_PROJECT_ID
